@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-interface Props {
+export interface Props {
   modelValue?: string | number;
   error?: string;
   type?: 'text' | 'number';
