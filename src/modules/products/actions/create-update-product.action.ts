@@ -1,7 +1,5 @@
-
 import { tesloApi } from '@/modules/api/tesloApi'
 import type { Product } from './interfaces/product.interface'
-
 
 export const createUpdateProductAction = async (product: Partial<Product>) => {
   const productId = product.id
@@ -42,8 +40,8 @@ const updateProduct = async (productId: string, product: Partial<Product>) => {
   try {
     const { data } = await tesloApi.patch<Product>(`/products/${productId}`, product)
     return data
-  } catch (error) {
-    console.log(error)
+  } catch (error: any) {
+    console.log(error?.response?.data)
     throw new Error('Error updating product')
   }
 }
@@ -52,8 +50,8 @@ const createProduct = async (product: Partial<Product>) => {
   try {
     const { data } = await tesloApi.post<Product>(`/products`, product)
     return data
-  } catch (error) {
-    console.log(error)
+  } catch (error: any) {
+    console.log(error?.response?.data)
     throw new Error('Error creating product')
   }
 }
